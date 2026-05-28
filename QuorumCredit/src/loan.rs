@@ -214,6 +214,19 @@ fn request_loan_internal(
 
     let mut total_stake: i128 = 0;
     for v in vouches.iter() {
+        // Skip vouches whose conditions exclude this loan amount
+        if let Some(ref cond) = v.conditions {
+            if let Some(max) = cond.max_loan_amount {
+                if amount > max {
+                    continue;
+                }
+            }
+            if let Some(min) = cond.min_loan_amount {
+                if amount < min {
+                    continue;
+                }
+            }
+        }
         total_stake += v.amount;
     }
 
