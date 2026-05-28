@@ -30,6 +30,11 @@ pub enum ContractError {
     SlashAlreadyExecuted = 33,
     QuorumNotMet = 34,
     AlreadyRepaid = 35,
+    // #684: Admin Delegation
+    PermissionNotDelegated = 36,
+    // #685: Admin Veto Power
+    ProposalVetoed = 37,
+    /// Voucher and borrower must be different addresses.
     SelfVouchNotAllowed = 38,
     InvalidBps = 39,
     DuplicateToken = 40,
